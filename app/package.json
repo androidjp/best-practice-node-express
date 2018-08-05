@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "The app for best practice.",
+  "scripts": {
+    "start": "node main.js",
+    "start-int": "export NODE_ENV=int && node main.js",
+    "start-prod": "export NODE_ENV=production && node main.js",
+    "unit": "ava --verbose"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "express": "^4.16.3",
+    "glob": "^7.1.2",
+    "lodash": "^4.17.10",
+    "mongoose": "^5.2.6",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "sinon": "^6.1.4"
+  }
+}
