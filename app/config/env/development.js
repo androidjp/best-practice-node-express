@@ -4,7 +4,7 @@ const defaultEnvConfig = require('./default');
 
 module.exports = {
 
-    mongoURL: 'mongodb://bigsa_admin:bigsa_admin@hkgcfdv01800:27017/bigs_analytics',
+    mongoURL: 'mongodb://47.106.86.64:27017/ape_esoterica',
 
     proxies: {
         cs4: {

@@ -14,7 +14,7 @@ module.exports.start = () => {
 };
 
 module.exports.init = () => {
-    // MongooseMonitor.connect(config.mongoURL).then(db => {
+    MongooseMonitor.connect(config.mongoURL).then(db => {
         let app = ExpressMonitor.init(null);
         app.listen(config.port, config.host, () => {
             const server = (process.env.NODE_ENV === 'secure' ? 'https://' : 'http://') + config.host + ':' + config.port;
@@ -27,7 +27,7 @@ module.exports.init = () => {
             console.log(chalk.green('Database:        ' + config.mongoURL));
             console.log('--');
         });
-    // }, error => {
-    //     console.error('start app error for db connection error', error);
-    // });
+    }, error => {
+        console.error('start app error for db connection error', error);
+    });
 };
