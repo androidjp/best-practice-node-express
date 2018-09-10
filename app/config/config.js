@@ -1,4 +1,3 @@
-const underscore = require('underscore');
 const _ = require('lodash');
 const chalk = require('chalk');
 const fs = require('fs');

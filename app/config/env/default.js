@@ -22,8 +22,8 @@ module.exports = {
         secure: false,
     },
     // sessionSecret should be changed for security measures and concerns
-    sessionSecret: process.env.SESSION_SECRET || 'OVA',
-    sessionKey: 'sessionId',
+    sessionSecret: process.env.SESSION_SECRET || 'BEST_PRACTICE_NODE_EXPRESS',
+    sessionKey: 'usersession',
     sessionCollection: 'sessions',
     // Lusca config
     csrf: {
