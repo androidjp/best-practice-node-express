@@ -11,6 +11,7 @@ module.exports.register = async (userInfo) => {
     await UserModel.save(userInfo);
     return {
       success: true,
+      message: '成功注册'
     };
   }
 };

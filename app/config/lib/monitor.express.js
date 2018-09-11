@@ -49,5 +49,5 @@ module.exports.initMiddleware = app => {
     cookie: {
       maxAge: config.sessionCookie.maxAge
     }
-  }))
+  }));
 };

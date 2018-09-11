@@ -7,7 +7,8 @@ const UserSchema = mongoose.Schema({
     unique:true
   },
   password: String,
-  createTime: Date
+  createTime: Date,
+  token: String
 }, {timestamps: true});
 
 const UserModel = module.exports = mongoose.model('User', UserSchema);

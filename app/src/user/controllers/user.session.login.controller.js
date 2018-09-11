@@ -5,6 +5,8 @@ const UserRegisterService = require('../services/user.register.service');
 module.exports = {
   login: login,
   register: register,
+  checkSession: checkSession,
+  deleteSession: deleteSession
 };
 
 function login (req, res) {
@@ -25,3 +27,16 @@ function register (req, res) {
   }).catch(err => res.json(err));
 }
 
+function checkSession (req, res) {
+  res.json({
+    session: true // 提供前端验证session存在与否
+  });
+}
+
+function deleteSession (req, res) {
+  req.session.user = null;
+  res.json({
+    session: false,
+    message: '登出成功'
+  })
+}
