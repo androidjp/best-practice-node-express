@@ -1,17 +1,21 @@
 'use strict';
-const UserLoginService = require('../services/user.login.service');
+const UserLoginSessionService = require('../services/user.login.session.service');
 const UserRegisterService = require('../services/user.register.service');
 
 module.exports = {
   login: login,
   register: register,
   checkSession: checkSession,
-  deleteSession: deleteSession
+  deleteSession: deleteSession,
+
+  loginWithToken:loginWithToken,
+  checkToken : checkToken,
+  deleteToken: deleteToken
 };
 
 function login (req, res) {
   let userLogin = req.body;
-  UserLoginService.login(userLogin).then(result => {
+  UserLoginSessionService.login(userLogin).then(result => {
     if (result.success) {
       req.session.user = userLogin.name;
     }
@@ -39,4 +43,16 @@ function deleteSession (req, res) {
     session: false,
     message: '登出成功'
   })
+}
+
+function loginWithToken(req, res) {
+
+}
+
+function checkToken(req, res) {
+
+}
+
+function deleteToken(req, res) {
+
 }

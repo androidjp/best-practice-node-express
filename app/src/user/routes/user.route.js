@@ -1,10 +1,15 @@
 'use strict';
-const UserSessionLoginController = require('../controllers/user.session.login.controller');
-const {checkLogin,checkNotLogin} = require('../controllers/user.session.validator.controller');
+const UserLoginController = require('../controllers/user.login.controller');
+const {checkLogin,checkNotLogin} = require('../interceptors/user.session.validator.controller');
 
 module.exports = app => {
-  app.route('/api/session/login').post(checkNotLogin, UserSessionLoginController.login);
-  app.route('/api/session/register').post(checkNotLogin, UserSessionLoginController.register);
+  app.route('/api/session/login').post(checkNotLogin, UserLoginController.login);
+  app.route('/api/session/register').post(UserLoginController.register);
+  app.route('/api/session/logout').get(checkLogin, UserLoginController.deleteSession);
 
-  app.route('/api').get(checkLogin, UserSessionLoginController.checkSession)
+  app.route('/api/token/login').post(checkNotLogin, UserLoginController.login);
+  app.route('/api/token/register').post(UserLoginController.register);
+  app.route('/api/token/logout').get(checkLogin, UserLoginController.deleteSession);
+
+  app.route('/api').get(checkLogin, UserLoginController.checkSession)
 };

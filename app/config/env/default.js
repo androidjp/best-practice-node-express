@@ -12,8 +12,8 @@ module.exports = {
     // Session Cookie settings
     sessionCookie: {
         // session expiration is set by default to 24 hours
-        // maxAge: 24 * (60 * 60 * 1000),
-        maxAge: 10000,
+        maxAge: 24 * (60 * 60 * 1000),
+        // maxAge: 10000,
         // httpOnly flag makes sure the cookie is only accessed
         // through the HTTP protocol and not JS/browser
         httpOnly: true,
@@ -26,6 +26,11 @@ module.exports = {
     sessionSecret: process.env.SESSION_SECRET || 'BEST_PRACTICE_NODE_EXPRESS',
     sessionKey: 'usersession',
     sessionCollection: 'sessions',
+
+    token: {
+      maxAge: '10s'
+    },
+
     // Lusca config
     csrf: {
         csrf: true,
