@@ -1,16 +1,14 @@
 'use strict';
 const UserLoginSessionService = require('../services/user.login.session.service');
-const UserRegisterService = require('../services/user.register.service');
+const UserLoginTokenService = require('../services/user.login.token.service');
 
 module.exports = {
   login: login,
   register: register,
-  checkSession: checkSession,
   deleteSession: deleteSession,
 
   loginWithToken:loginWithToken,
-  checkToken : checkToken,
-  deleteToken: deleteToken
+  registerWithToken: registerWithToken
 };
 
 function login (req, res) {
@@ -25,34 +23,31 @@ function login (req, res) {
 
 function register (req, res) {
   let userInfo = req.body;
-  console.log(JSON.stringify(userInfo));
-  UserRegisterService.register(userInfo).then(result => {
+  UserLoginSessionService.register(userInfo).then(result => {
     res.json(result);
   }).catch(err => res.json(err));
 }
 
-function checkSession (req, res) {
-  res.json({
-    session: true // 提供前端验证session存在与否
-  });
+
+function loginWithToken(req, res) {
+  let userInfo = req.body;
+  UserLoginTokenService.login(userInfo).then(result => {
+    res.json(result);
+  }).catch(err => res.json(err));
+}
+
+function registerWithToken(req, res) {
+  let userInfo = req.body;
+  UserLoginTokenService.register(userInfo).then(result => {
+    res.json(result);
+  }).catch(err => res.json(err));
 }
 
 function deleteSession (req, res) {
   req.session.user = null;
   res.json({
-    session: false,
+    success: true,
+    session: true,
     message: '登出成功'
   })
-}
-
-function loginWithToken(req, res) {
-
-}
-
-function checkToken(req, res) {
-
-}
-
-function deleteToken(req, res) {
-
 }

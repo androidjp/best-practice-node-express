@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const UserSchema = mongoose.Schema({
+const UserTokenSchema = mongoose.Schema({
   name: {
     type: String,
     index: true,
@@ -8,6 +8,7 @@ const UserSchema = mongoose.Schema({
   },
   password: String,
   createTime: Date,
+  token: String
 }, {timestamps: true});
 
-const UserModel = module.exports = mongoose.model('User', UserSchema);
+const UserTokenModel = module.exports = mongoose.model('UserToken', UserTokenSchema);
