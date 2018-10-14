@@ -8,4 +8,5 @@ COPY app /nodeapps/BestPracticeNodeExpress
 RUN npm install
 
 EXPOSE 8099
-CMD ["npm", "start"]
+ENTRYPOINT ["npm", "run"]
+CMD ["start"]

@@ -6,7 +6,7 @@ module.exports = {
         description: 'MongoDB, Express and Node.js',
         keywords: 'mongodb, express, node.js, mongoose, passport',
     },
-    port: process.env.PORT || 9999,
+    port: process.env.PORT || 8099,
     host: process.env.HOST || '0.0.0.0',
     templateEngine: 'swig',
     // Session Cookie settings
