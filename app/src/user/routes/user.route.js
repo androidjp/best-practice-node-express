@@ -10,7 +10,6 @@ module.exports = app => {
 
   app.route('/api/token/login').post(checkNotLogin, UserLoginController.loginWithToken);
   app.route('/api/token/register').post(UserLoginController.registerWithToken);
-  app.route('/api/token/logout').get(checkLogin, UserLoginController.deleteSession);
 
   app.route('/api').get(checkLogin, (req, res) => {
     res.json({
