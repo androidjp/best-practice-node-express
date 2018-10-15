@@ -9,6 +9,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "----Build----"'
+                sh 'echo "----Current Docker containers----"'
+                sh 'docker ps'
+                sh 'echo "----Docker build----"'
                 sh 'docker build -t best_practice_node_express .'
             }
         }
