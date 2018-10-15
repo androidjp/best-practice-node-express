@@ -4,6 +4,7 @@ pipeline {
         stage('Test'){
             steps {
                 sh 'echo "----Test----"'
+                sh 'ls ./'
             }
         }
         stage('Build') {
