@@ -4,28 +4,26 @@ pipeline {
         stage('Test'){
             steps {
                 sh 'echo "----Test----"'
-                sh 'ls ./'
             }
         }
         stage('Build') {
             steps {
                 sh 'echo "----Build----"'
-                sh 'sudo docker build -t best_practice_node_express .'
+                sh 'docker build -t best_practice_node_express .'
             }
         }
         stage('Deploy') {
             steps {
                 sh 'echo "----Deploy----"'
                 sh '''
-
-                CID=$(sudo docker ps | grep "best_practice_node_express" | awk '{print $1}')
+                CID=$(docker ps | grep "best_practice_node_express" | awk '{print $1}')
                 if [ "$CID" != "" ];then
-                  sudo docker stop $CID
-                  sudo docker rm $CID
+                  docker stop $CID
+                  docker rm $CID
                 fi
                 '''
                 sh 'echo $CID'
-                sh 'sudo docker run -p 8099:8099 -d --name best_practice_node_express'
+                sh 'docker run -p 8099:8099 -d --name best_practice_node_express'
             }
         }
     }
