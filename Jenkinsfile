@@ -1,21 +1,18 @@
 pipeline {
     agent any
     stages {
-        stage('Get permission') {
-            steps {
-                sh 'sudo visudo'
-            }
-        }
         stage('Test'){
             steps {
                 sh 'echo "----Test----"'
+                sh 'w'
+                sh 'whoami'
             }
         }
         stage('Build') {
             steps {
                 sh 'echo "----Build----"'
                 sh 'echo "----Current Docker containers----"'
-                sh 'sudo docker ps'
+                sh 'docker ps'
                 sh 'echo "----Docker build----"'
                 sh 'docker build -t best_practice_node_express .'
             }
@@ -32,11 +29,6 @@ pipeline {
                 '''
                 sh 'echo $CID'
                 sh 'docker run -p 8099:8099 -d --name best_practice_node_express'
-            }
-        }
-        stage ('Finally') {
-            steps {
-                sh 'jenkins ALL = NOPASSWD: /Users/jenkins/Desktop/new_mp_tool'
             }
         }
     }
