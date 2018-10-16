@@ -11,10 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "----Build----"'
-                sh 'echo "----Current Docker containers----"'
-                sh 'sudo docker ps'
-                sh 'echo "----Docker build----"'
-                sh 'sudo docker build -t best_practice_node_express .'
+                sh 'docker build -t best_practice_node_express .'
             }
         }
         stage('Deploy') {
@@ -28,7 +25,7 @@ pipeline {
                 fi
                 '''
                 sh 'echo $CID'
-                sh 'sudo docker run -p 8099:8099 -d --name best_practice_node_express'
+                sh 'sudo docker run -p 8099:8099 -d --name best_practice_node_express best_practice_node_express'
             }
         }
     }
